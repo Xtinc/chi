@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/Chimera">
+        <file>Resources/bitbug_favicon.ico</file>
+        <file>Resources/Wallpaper.jpg</file>
+    </qresource>
+    <qresource prefix="/ads">
+        <file>Resources/default-windows.css</file>
+        <file>Resources/modern-windows.css</file>
+        <file>Resources/vendor-partsolutions.css</file>
+    </qresource>
+    <qresource prefix="/font">
+        <file>Resources/consola.ttf</file>
+        <file>Resources/consolab.ttf</file>
+        <file>Resources/consolai.ttf</file>
+        <file>Resources/consolaz.ttf</file>
+    </qresource>
+    <qresource prefix="/list">
+        <file>Resources/keywords.txt</file>
+    </qresource>
+</RCC>
