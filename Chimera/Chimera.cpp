@@ -400,8 +400,8 @@ void Chimera::setTworkdir()
 
 void Chimera::StartMelgenTerminal()
 {
-	std::string appPath = (QDir::currentPath() + "/bin/Melgen.exe").toStdString();
-	std::string workPath = tworkdir.toStdString();
+	std::string appPath((QDir::currentPath() + "/bin/Melgen.exe").toLocal8Bit());
+	std::string workPath(tworkdir.toLocal8Bit());
 	int l = MultiByteToWideChar(CP_ACP, 0, appPath.c_str(), -1, NULL, 0);
 	int m= MultiByteToWideChar(CP_ACP, 0, workPath.c_str(), -1, NULL, 0);
 	LPWSTR filePath = new TCHAR[l];
@@ -413,8 +413,8 @@ void Chimera::StartMelgenTerminal()
 
 void Chimera::StartMelcorTermial()
 {
-	std::string appPath = (QDir::currentPath() + "/bin/Melcor.exe").toStdString();
-	std::string workPath = tworkdir.toStdString();
+	std::string appPath((QDir::currentPath() + "/bin/Melgen.exe").toLocal8Bit());
+	std::string workPath(tworkdir.toLocal8Bit());
 	int l = MultiByteToWideChar(CP_ACP, 0, appPath.c_str(), -1, NULL, 0);
 	int m = MultiByteToWideChar(CP_ACP, 0, workPath.c_str(), -1, NULL, 0);
 	LPWSTR filePath = new TCHAR[l];

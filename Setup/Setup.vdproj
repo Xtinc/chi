@@ -87,6 +87,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_4E6D702967ED4682B3A1B8C228DCC0DE"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_5D302C3E44484BEEB89CFD6F5B9FB909"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -124,6 +130,12 @@
         "Entry"
         {
         "MsmKey" = "8:_8D14D3627A344157AEB93840C9017775"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8E2D8CF7BF8242C69EAFE17339934C22"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -190,6 +202,12 @@
         "Entry"
         {
         "MsmKey" = "8:_E5727DC06326477DA2CC32A16C9C1C71"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E6FD4D66760D41BABF12FEDDC116434F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -523,6 +541,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4E6D702967ED4682B3A1B8C228DCC0DE"
+            {
+            "SourcePath" = "8:..\\Chimera\\bin\\libifportmd.dll"
+            "TargetName" = "8:libifportmd.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_A82C37BE32EE4D308D562C720F9340F0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5D302C3E44484BEEB89CFD6F5B9FB909"
             {
             "SourcePath" = "8:..\\Chimera\\qtdependcy\\Qt5Svg.dll"
@@ -649,6 +687,26 @@
             "TargetName" = "8:qwindows.dll"
             "Tag" = "8:"
             "Folder" = "8:_E00E0DBE4666454E8C7CEFBA93747155"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8E2D8CF7BF8242C69EAFE17339934C22"
+            {
+            "SourcePath" = "8:..\\Chimera\\bin\\libmmd.dll"
+            "TargetName" = "8:libmmd.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_A82C37BE32EE4D308D562C720F9340F0"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -867,6 +925,26 @@
             {
             "SourcePath" = "8:..\\Chimera\\bin\\Melgen.exe"
             "TargetName" = "8:Melgen.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_A82C37BE32EE4D308D562C720F9340F0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E6FD4D66760D41BABF12FEDDC116434F"
+            {
+            "SourcePath" = "8:..\\Chimera\\bin\\libifcoremd.dll"
+            "TargetName" = "8:libifcoremd.dll"
             "Tag" = "8:"
             "Folder" = "8:_A82C37BE32EE4D308D562C720F9340F0"
             "Condition" = "8:"

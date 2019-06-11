@@ -1,6 +1,5 @@
 #include "TTable.h"
 #include "InputDeck.h"
-#include "QSpreadsheetHeaderView.h"
 #include <QUuid>
 #include <QDir>
 #include <QDateTime>
@@ -25,9 +24,9 @@ TTable::TTable(QWidget *parent)
 	//QStringList labels;
 	//labels << tr("Input") << tr("WorkDir") << tr("Progress") << tr("TimeStart") << tr("TimeEnd") << tr("Status") << tr("UUID");
 	//setHorizontalHeaderLabels(labels);
-	//horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
-	//horizontalHeader()->setStretchLastSection(true);
-	//horizontalHeader()->setSectionsClickable(false);
+	horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+	horizontalHeader()->setStretchLastSection(true);
+	horizontalHeader()->setSectionsClickable(false);
 	horizontalHeader()->hide();
 	verticalHeader()->hide();
 	//setShowGrid(false);
