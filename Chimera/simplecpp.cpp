@@ -279,8 +279,15 @@ std::string simplecpp::TokenList::stringify() const
             loc.line++;
         }
 
-        if (sameline(tok->previous, tok))
-            ret << ' ';
+		if (sameline(tok->previous, tok)) {
+			if (tok->op == '(' || tok->op == ')' || tok->previous->op == '(' || tok->previous->op == ')') {
+
+			}
+			else
+			{
+				ret << ' ';
+			}
+		}
 
         ret << tok->str();
 
@@ -378,7 +385,7 @@ static unsigned short getAndSkipBOM(std::istream &istr)
 
 static bool isNameChar(unsigned char ch)
 {
-    return std::isalnum(ch) || ch == '_' || ch == '$';
+	return std::isalnum(ch) || ch == '_' || ch == '$' || ch == '-';
 }
 
 static std::string escapeString(const std::string &str)
