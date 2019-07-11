@@ -413,7 +413,7 @@ void Chimera::StartMelgenTerminal()
 
 void Chimera::StartMelcorTermial()
 {
-	std::string appPath((QDir::currentPath() + "/bin/Melgen.exe").toLocal8Bit());
+	std::string appPath((QDir::currentPath() + "/bin/Melcor.exe").toLocal8Bit());
 	std::string workPath(tworkdir.toLocal8Bit());
 	int l = MultiByteToWideChar(CP_ACP, 0, appPath.c_str(), -1, NULL, 0);
 	int m = MultiByteToWideChar(CP_ACP, 0, workPath.c_str(), -1, NULL, 0);
