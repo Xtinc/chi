@@ -32,6 +32,7 @@ void WriteSharedMemory(long int hmap, const char * message)
 		HANDLE pview = MapViewOfFile(LongToHandle(hmap), FILE_MAP_ALL_ACCESS, 0, 0, 0);
 		strcpy_s((char*)pview, strlen(message) + 1, message);
 		UnmapViewOfFile(pview);
+		CloseHandle(pview);
 	}
 }
 
@@ -47,6 +48,7 @@ QString ReadSharedMemory(long int hmap)
 		HANDLE pview = MapViewOfFile(LongToHandle(hmap), FILE_MAP_ALL_ACCESS, 0, 0, 0);
 		strcpy_s(message, 4096, (char*)pview);
 		UnmapViewOfFile(pview);
+		CloseHandle(pview);
 	}
 	return QString(message);
 }
