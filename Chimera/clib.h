@@ -39,17 +39,16 @@ void WriteSharedMemory(long int hmap, const char * message)
 QString ReadSharedMemory(long int hmap)
 {
 	char message[4096];
-	if (LongToHandle(hmap) == NULL)
+	LPVOID pview = MapViewOfFile(LongToHandle(hmap), FILE_MAP_ALL_ACCESS, 0, 0, 0);
+	if (pview == NULL)
 	{
 		strcpy_s(message, 5, "NULL");
 	}
 	else
 	{
-		HANDLE pview = MapViewOfFile(LongToHandle(hmap), FILE_MAP_ALL_ACCESS, 0, 0, 0);
 		strcpy_s(message, 4096, (char*)pview);
-		UnmapViewOfFile(pview);
-		CloseHandle(pview);
 	}
+	UnmapViewOfFile(pview);
 	return QString(message);
 }
 

@@ -213,6 +213,7 @@ void InputDeck::check(const QString &filename)
 
 InputDeck::~InputDeck()
 {
+	
 }
 
 int InputDeck::Interval() const
@@ -289,10 +290,9 @@ void InputDeck::showChart()
 
 void InputDeck::ReadOutput()
 {
-	long int handle = InquiredSharedMemory(uuid_.toLocal8Bit().data());
-	if (handle > 0)
+	if (thandle > 0)
 	{
-		QString str = ReadSharedMemory(handle);
+		QString str = ReadSharedMemory(thandle);
 		QStringList list= str.split("#", QString::SkipEmptyParts);
 		if (!list.isEmpty()) {
 			if (list.first().contains("progress")) {
@@ -383,7 +383,7 @@ void InputDeck::processfinished(int exitCode, const QProcess::ExitStatus &exitSt
 	{
 		qInfo() << uuid_ << ":melcor finished.";
 	}
-	CloseSharedMemory(thandle);
+	thandle = 0;
 	emit finished(uuid_);
 }
 
