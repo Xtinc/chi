@@ -4,7 +4,7 @@ chimera is a integerated MELCOR development toolkits. It supports card generatin
 ![image](https://github.com/Xtinc/chi/blob/master/image/text.png)
 ### Perform a thermo-hydrodynamic calculating.
 ![image](https://github.com/Xtinc/chi/blob/master/image/运行界面.png)
-### Read Melcor PTF files and draw like origin.
+### Read Melcor PTF files and draw like origin(it used JKQTPLOT).
 ![image](https://github.com/Xtinc/chi/blob/master/image/210814.png)
 ### differ between folders or files.
 ![image](https://github.com/Xtinc/chi/blob/master/image/dif1.png)
