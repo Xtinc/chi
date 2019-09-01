@@ -129,6 +129,12 @@
     <ClCompile Include="QSpreadsheetHeaderView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="VarPool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlotDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Chimera.h">
@@ -216,6 +222,9 @@
     <QtUic Include="diffdialog.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="PlotDialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphWidget.h">
@@ -290,16 +299,13 @@
     <ClInclude Include="resource1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="resource2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="resource3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="resource4.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="simplecpp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VarPool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlotDialog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -12,7 +12,12 @@ ContentWidget::ContentWidget(QWidget *parent)
 	:QWidget(parent)
 {
 	ui.setupUi(this);
+	strmodel = new QStringListModel(this);
+	ui.VarView->setModel(strmodel);
+	ui.VarView->setEditTriggers(QAbstractItemView::NoEditTriggers);
 	ui.pushButton_3->setIcon(myApp()->qtAwesome()->icon(fa::plus));
+	ui.pushButton->setIcon(myApp()->qtAwesome()->icon(fa::close));
+	connect(ui.pushButton, &QPushButton::pressed, this, &ContentWidget::onClearPressed);
 	connect(ui.pushButton_3, &QPushButton::pressed, this, &ContentWidget::onNewTaskPressed);
 	ui.listWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
 	connect(ui.listWidget, &QListWidget::doubleClicked, this, &ContentWidget::onListViewClicked);
@@ -56,12 +61,22 @@ void ContentWidget::updateModel()
 	}
 }
 
+void ContentWidget::updateVars(const QStringList & list)
+{
+	strmodel->setStringList(list);
+}
+
 void ContentWidget::onNewTaskPressed()
 {
 	melcorDig dig(this);
 	if (dig.exec() == QDialog::Accepted) {
 		ui.tableWidget->addTask(dig.FileName(), dig.WorkPath());
 	}
+}
+
+void ContentWidget::onClearPressed()
+{
+	emit RequireClearVar();
 }
 
 void ContentWidget::onListViewClicked(const QModelIndex &index)

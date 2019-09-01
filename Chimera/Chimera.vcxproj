@@ -240,6 +240,7 @@
       <Define Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">UNICODE;_UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CHARTS_LIB;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB</Define>
     </ClCompile>
     <ClCompile Include="melcordig.cpp" />
+    <ClCompile Include="PlotDialog.cpp" />
     <ClCompile Include="PTFWidget.cpp" />
     <ClCompile Include="QSpreadsheetHeaderView.cpp" />
     <ClCompile Include="qtdiff\ctl\zfolderctl.cpp" />
@@ -259,6 +260,7 @@
     <ClCompile Include="RegularExpressionDialog.cpp" />
     <ClCompile Include="simplecpp.cpp" />
     <ClCompile Include="TTable.cpp" />
+    <ClCompile Include="VarPool.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Chimera.h" />
@@ -290,12 +292,15 @@
     <QtUic Include="diffdialog.ui" />
     <QtUic Include="FindWidget.ui" />
     <QtUic Include="MelDig.ui" />
+    <QtUic Include="PlotDialog.ui" />
     <QtUic Include="PTFWidget.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="FindWidget.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="PlotDialog.h" />
+    <ClInclude Include="VarPool.h" />
     <QtMoc Include="QSpreadsheetHeaderView.h" />
     <ClInclude Include="qtdiff\diff\zfilediff.h" />
     <ClInclude Include="qtdiff\diff\zfilediffmodel.h" />
@@ -317,9 +322,6 @@
     <ClInclude Include="qtdiff\util\zrand.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="resource1.h" />
-    <ClInclude Include="resource2.h" />
-    <ClInclude Include="resource3.h" />
-    <ClInclude Include="resource4.h" />
     <ClInclude Include="simplecpp.h" />
     <QtMoc Include="qtdiff\widget\file\zfilewidget.h" />
     <ClInclude Include="qtdiff\widget\tree\ztreeitem.h" />

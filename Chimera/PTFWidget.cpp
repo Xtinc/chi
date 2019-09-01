@@ -3,6 +3,7 @@
 #include <QDir>
 #include <QDebug>
 #include <QMenu>
+#include <QInputDialog>
 
 int PTFWidget::count = 0;
 
@@ -247,7 +248,10 @@ void PTFWidget::ShowMenu(const QPoint &pos)
 		connect(PlotAct, &QAction::triggered, this, &PTFWidget::PlotVars);
 		QAction *foldAct = new QAction("Fold/Unfold", &menu);
 		connect(foldAct, &QAction::triggered,this,&PTFWidget::FoldOrExpand);
+		QAction *SaveAct = new QAction("Save Variables", &menu);
+		connect(SaveAct, &QAction::triggered, this, &PTFWidget::SaveVars);
 		menu.addAction(PlotAct);
+		menu.addAction(SaveAct);
 		menu.addAction(foldAct);
 		menu.exec(mapToGlobal(pos));
 	}
@@ -294,6 +298,34 @@ void PTFWidget::PlotVars()
 	}
 	if (!idx.isEmpty()) {
 		emit RequirePLOT(filename,namelist, idx);
+	}
+}
+
+void PTFWidget::SaveVars()
+{
+	QVector<int> idx;
+	QList<QTreeWidgetItem*> li = ui.treeWidget->selectedItems();
+	if (li.isEmpty()) {
+		return;
+	}
+	QTreeWidgetItem*i = li.first();
+	if (i->parent() == nullptr) {
+		return;
+	}
+	if (i->parent()->parent() == nullptr) {
+		return;
+	}
+	if (i->parent()->parent()->parent() == nullptr) {
+		int ix = pdlist.indexOf(QRegularExpression(i->parent()->text(0)));
+		int k = i->parent()->indexOfChild(i);
+		int rix = idxlist.at(ix) + k;
+		idx.append(rix);
+		QString nickname = QInputDialog::getText(this, "Name a variable.", "Var Name:");
+		emit RequireSAVE(filename, nickname, idx);
+	}
+	else
+	{
+		return;
 	}
 }
 

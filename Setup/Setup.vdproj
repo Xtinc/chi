@@ -1151,6 +1151,17 @@
             "Property" = "8:ProgramMenuFolder"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_6086E9824ED84D64A30BE0C051231F1B"
+                    {
+                    "Name" = "8:Chimera"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_EE56187E41924A60BB42B91B2C4EC74A"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
         }
@@ -1169,15 +1180,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Chimera"
-        "ProductCode" = "8:{4217D4E2-503A-4155-81CC-42DBF043060F}"
-        "PackageCode" = "8:{F4196482-4DB0-48D8-BBBD-B34B96EE2F31}"
+        "ProductCode" = "8:{BF9370C7-5CFC-429C-957F-E2DCC7B99AE5}"
+        "PackageCode" = "8:{44ACD0E7-282B-4FED-AC21-97FDCF68FE44}"
         "UpgradeCode" = "8:{A0A46B10-F81B-4E06-9C71-E9F51AF3A89D}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.3"
+        "ProductVersion" = "8:1.0.4"
         "Manufacturer" = "8:XJTU"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1313,7 +1324,7 @@
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
             "Target" = "8:_25C29E92802C4BFEB994028FBF7CC889"
-            "Folder" = "8:_D3DC9100012A41D08AD4A015BBDC8F01"
+            "Folder" = "8:_6086E9824ED84D64A30BE0C051231F1B"
             "WorkingFolder" = "8:_CF5B4158CA724AA3884524808B760016"
             "Icon" = "8:_1289252D333D40A180BAA8776183B732"
             "Feature" = "8:"
@@ -1321,13 +1332,13 @@
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_FFDE933688724AB0AA9244BC54F9F20B"
             {
             "Name" = "8:unistall"
-            "Arguments" = "8:/x {4217D4E2-503A-4155-81CC-42DBF043060F}"
+            "Arguments" = "8:/x {BF9370C7-5CFC-429C-957F-E2DCC7B99AE5}"
             "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
             "Target" = "8:_4AB2F9831EAB439C82E8077D095303E3"
-            "Folder" = "8:_D3DC9100012A41D08AD4A015BBDC8F01"
+            "Folder" = "8:_6086E9824ED84D64A30BE0C051231F1B"
             "WorkingFolder" = "8:_CF5B4158CA724AA3884524808B760016"
             "Icon" = "8:"
             "Feature" = "8:"

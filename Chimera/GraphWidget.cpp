@@ -32,15 +32,39 @@ GraphWidget::~GraphWidget()
 {
 }
 
-void GraphWidget::setData(const QVector<double>& X, const QVector<double>& Y)
+void GraphWidget::setData(const QString &Title,const QString &NameX, const QVector<double> &X, const QStringList &NameY, const QList<QVector<double>> &Y, ChartType ctype)
 {
 	JKQTPDatastore* ds = plotDate->getDatastore();
-	size_t cX = ds->addCopiedColumn(X,"time");
-	size_t cY = ds->addCopiedColumn(Y, "dataY");
-	JKQTPXYLineGraph *graph = new JKQTPXYLineGraph(plotDate);
-	graph->setXColumn(cX);
-	graph->setYColumn(cY);
-	plotDate->addGraph(graph);
+	size_t cX = ds->addCopiedColumn(X, NameX);
+	size_t cY;
+	if (ctype == ChartType::Line) {
+		for (int i = 0; i < Y.length(); i++)
+		{
+			JKQTPXYLineGraph *graph = new JKQTPXYLineGraph(plotDate);
+			graph->setXColumn(cX);
+			cY = ds->addCopiedColumn(Y.at(i), NameY.at(i));
+			graph->setYColumn(cY);
+			graph->setTitle(Title);
+			graph->setSymbolSize(0.0);
+			plotDate->addGraph(graph);
+		}
+	}
+	if (ctype == ChartType::Scatter) {
+		for (int i = 0; i < Y.length(); i++)
+		{
+			JKQTPXYParametrizedScatterGraph *graph = new JKQTPXYParametrizedScatterGraph(plotDate);
+			graph->setXColumn(cX);
+			cY = ds->addCopiedColumn(Y.at(i), NameY.at(i));
+			graph->setYColumn(cY);
+			graph->setTitle(Title);
+			plotDate->addGraph(graph);
+		}
+	}
+	else
+	{
+
+	}
+	plotDate->zoomToFit();
 }
 
 void GraphWidget::setPTF(const QString & path, const QStringList &name,const QVector<int> & str)

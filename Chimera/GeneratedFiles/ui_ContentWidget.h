@@ -16,6 +16,7 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QListView>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
@@ -28,19 +29,22 @@ class Ui_ContentWidget
 {
 public:
     QGridLayout *gridLayout;
+    QSpacerItem *horizontalSpacer_3;
     QSpacerItem *horizontalSpacer_2;
     TTable *tableWidget;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer;
     QPushButton *pushButton_3;
     QLabel *label;
-    QSpacerItem *horizontalSpacer_3;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_2;
     QSpacerItem *horizontalSpacer_4;
-    QFrame *line;
     QListWidget *listWidget;
     QFrame *line_2;
+    QFrame *line;
+    QListView *VarView;
+    QFrame *line_3;
+    QPushButton *pushButton;
 
     void setupUi(QWidget *ContentWidget)
     {
@@ -51,6 +55,10 @@ public:
         gridLayout = new QGridLayout(ContentWidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setContentsMargins(-1, -1, -1, 27);
+        horizontalSpacer_3 = new QSpacerItem(122, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer_3, 2, 5, 1, 1);
+
         horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         gridLayout->addItem(horizontalSpacer_2, 2, 0, 1, 1);
@@ -98,10 +106,6 @@ public:
 
         gridLayout->addLayout(horizontalLayout, 0, 3, 1, 1);
 
-        horizontalSpacer_3 = new QSpacerItem(122, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout->addItem(horizontalSpacer_3, 2, 4, 1, 1);
-
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         label_2 = new QLabel(ContentWidget);
@@ -115,13 +119,6 @@ public:
 
 
         gridLayout->addLayout(horizontalLayout_2, 0, 1, 1, 1);
-
-        line = new QFrame(ContentWidget);
-        line->setObjectName(QString::fromUtf8("line"));
-        line->setFrameShape(QFrame::HLine);
-        line->setFrameShadow(QFrame::Sunken);
-
-        gridLayout->addWidget(line, 1, 1, 1, 3);
 
         listWidget = new QListWidget(ContentWidget);
         listWidget->setObjectName(QString::fromUtf8("listWidget"));
@@ -147,6 +144,44 @@ public:
 
         gridLayout->addWidget(line_2, 2, 2, 1, 1);
 
+        line = new QFrame(ContentWidget);
+        line->setObjectName(QString::fromUtf8("line"));
+        line->setFrameShape(QFrame::HLine);
+        line->setFrameShadow(QFrame::Sunken);
+
+        gridLayout->addWidget(line, 1, 1, 1, 3);
+
+        VarView = new QListView(ContentWidget);
+        VarView->setObjectName(QString::fromUtf8("VarView"));
+        VarView->setContextMenuPolicy(Qt::NoContextMenu);
+        VarView->setFrameShape(QFrame::NoFrame);
+        VarView->setFrameShadow(QFrame::Plain);
+        VarView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        VarView->setSelectionBehavior(QAbstractItemView::SelectItems);
+
+        gridLayout->addWidget(VarView, 2, 4, 1, 1);
+
+        line_3 = new QFrame(ContentWidget);
+        line_3->setObjectName(QString::fromUtf8("line_3"));
+        line_3->setFrameShape(QFrame::HLine);
+        line_3->setFrameShadow(QFrame::Sunken);
+
+        gridLayout->addWidget(line_3, 1, 4, 1, 1);
+
+        pushButton = new QPushButton(ContentWidget);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"background-color:rgba(0, 0, 0, 0);\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: rgb(0, 0, 0,60);\n"
+"}\n"
+"QPushButton:pressed{\n"
+"background-color:rgb(0,0,0,80);\n"
+"}"));
+
+        gridLayout->addWidget(pushButton, 0, 4, 1, 1);
+
         gridLayout->setColumnStretch(0, 1);
         gridLayout->setColumnStretch(1, 2);
         gridLayout->setColumnStretch(2, 1);
@@ -164,6 +199,7 @@ public:
         pushButton_3->setText(QString());
         label->setText(QString());
         label_2->setText(QApplication::translate("ContentWidget", "Recent...", nullptr));
+        pushButton->setText(QApplication::translate("ContentWidget", "Clear Vars", nullptr));
     } // retranslateUi
 
 };

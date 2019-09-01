@@ -37,11 +37,13 @@ public:
 	void FoldOrExpand();
 signals:
 	void RequirePLOT(QString filepath, const QStringList &name,const QVector<int> &str);
+	void RequireSAVE(QString filepath, const QString &name, const QVector<int> &str);
 private:
 	Ui::PTFWidget ui;
 	void SpecifiedList();
 	void ShowMenu(const QPoint &pos);
 	void PlotVars();
+	void SaveVars();
 	QStringList pdlist;
 	QVector<int> idxlist;
 	QString filename;

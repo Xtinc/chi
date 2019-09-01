@@ -14,6 +14,7 @@ class QPlainTextEdit;
 class QMessageLogContext;
 class QMenu;
 class ContentWidget;
+class VarPool;
 
 namespace ads {
 	class ContainerWidget;
@@ -26,8 +27,10 @@ class Chimera : public QMainWindow
 
 public:
 	Chimera(QWidget *parent = Q_NULLPTR);
+	~Chimera();
 	QPlainTextEdit *console() const;
 	ads::SectionContent::RefPtr getCurrentSC();
+	VarPool *varpool;
 
 public:
 	enum WindowType
@@ -52,6 +55,7 @@ private:
 	//ads::SectionContent::RefPtr ConstructWin(ads::ContainerWidget *_container,WindowType type);
 	void updateWindowMenu();
 	void newTextFile();
+	void newPlotFile();
 	void Open();
 	void OpenFile(const QString &str);
 	void closeAll();
@@ -69,6 +73,8 @@ private:
 	void setTworkdir();
 	void StartMelgenTerminal();
 	void StartMelcorTermial();
+	void updateVarList(QString filepath, const QString &name,const QVector<int> &str);
+	void ClearVars();
 private:
 	ads::ContainerWidget *_container;//main window
 	ads::SectionWidget *_sectionwidget;//layout container

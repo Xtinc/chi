@@ -10,6 +10,8 @@
 #include "QtAwesome/QtAwesome.h"
 #include "qtdiff/widget/folder/zfolderwidget.h"
 #include "qtdiff/widget/file/zfilewidget.h"
+#include "VarPool.h"
+#include "PlotDialog.h"
 #include <QLabel>
 #include <QDebug>
 #include <QMenuBar>
@@ -18,10 +20,12 @@
 #include <QFileDialog>
 #include <QSettings>
 #include <QMessageBox>
+#include <QVector>
 
 Chimera::Chimera(QWidget *parent)
 	: QMainWindow(parent),_sectionwidget(nullptr)
 {
+	varpool = new VarPool;
 	_container = new ADS_NS::ContainerWidget;
 	setCentralWidget(_container);
 	ConstructContent();
@@ -29,6 +33,11 @@ Chimera::Chimera(QWidget *parent)
 	ConstructMenu();
 	setAcceptDrops(true);
 	resize(2 * myApp()->desktop()->screenGeometry().width() / 3, 2 * myApp()->desktop()->screenGeometry().height() / 3);
+}
+
+Chimera::~Chimera()
+{
+	delete varpool;
 }
 
 QPlainTextEdit * Chimera::console() const
@@ -97,6 +106,10 @@ void Chimera::ConstructMenu()
 	connect(newtextfileAct, &QAction::triggered, this, &Chimera::newTextFile);
 	fileMenu->addAction(newtextfileAct);
 
+	QAction *newplotfileAct = new QAction(QIcon(myApp()->qtAwesome()->icon(fa::image)), "New Plot", this);
+	connect(newplotfileAct, &QAction::triggered, this, &Chimera::newPlotFile);
+	fileMenu->addAction(newplotfileAct);
+
 	fileMenu->addSeparator();
 
 	recentMenu = fileMenu->addMenu(tr("Recent..."));
@@ -152,11 +165,13 @@ void Chimera::ConstructMenu()
 void Chimera::ConstructContent()
 {
 	contentwidget = new ContentWidget;
+	contentwidget->updateVars(varpool->GetNameList());
 	ADS_NS::SectionContent::RefPtr SC = ADS_NS::SectionContent::newSectionContent("Start", _container,new QLabel("Start"),contentwidget);
 	SC->setPinned(true);
 	SC->setFlags(ADS_NS::SectionContent::None);
 	_sectionwidget=_container->addSectionContent(SC);
 	connect(contentwidget,&ContentWidget::RequireOpenFile,this,&Chimera::OpenFile);
+	connect(contentwidget, &ContentWidget::RequireClearVar, this, &Chimera::ClearVars);
 }
 
 void Chimera::updateWindowMenu()
@@ -184,6 +199,27 @@ void Chimera::newTextFile()
 	_container->addSectionContent(SC, _sectionwidget, ADS_NS::CenterDropArea);
 	_container->raiseSectionContent(SC);
 	connect(edit, &Editor::titlechanged, this, &Chimera::prependToRecentFiles);
+}
+
+void Chimera::newPlotFile()
+{
+	PlotDialog dig(varpool->GetNameList(),this);
+	if (dig.exec() == QDialog::Accepted) {
+		QStringList tlist = dig.returnXY();
+		QString x = tlist.first();
+		tlist.removeFirst();
+		QList<QVector<double>> tmpvec;
+		for (int i = 0; i < tlist.length(); i++)
+		{
+			tmpvec.append(varpool->FindByName(tlist.at(i)));
+		}
+		GraphWidget *Graph = new GraphWidget;
+		ADS_NS::SectionContent::RefPtr SC = ConstructWin<GraphWidget*>(Graph, _container);
+		_container->addSectionContent(SC, _sectionwidget, ADS_NS::CenterDropArea);
+		_container->raiseSectionContent(SC);
+		Graph->setData(dig.returnTitle(), x, varpool->FindByName(x),
+			tlist, tmpvec, dig.returnType());
+	}
 }
 
 void Chimera::Open()
@@ -215,6 +251,7 @@ void Chimera::OpenFile(const QString &filename)
 			PTFWidget *edit = new PTFWidget;
 			edit->setFile(filename);
 			connect(edit, &PTFWidget::RequirePLOT, this, &Chimera::CreatePTFPlot);
+			connect(edit, &PTFWidget::RequireSAVE, this, &Chimera::updateVarList);
 			auto con = ConstructWin<PTFWidget*>(edit, _container);
 			_container->addSectionContent(con, _sectionwidget, ADS_NS::CenterDropArea);
 			_container->raiseSectionContent(con);
@@ -422,6 +459,24 @@ void Chimera::StartMelcorTermial()
 	MultiByteToWideChar(CP_ACP, 0, appPath.c_str(), -1, filePath, l);
 	MultiByteToWideChar(CP_ACP, 0, workPath.c_str(), -1, wkPath, m);
 	ShellExecute(NULL, (LPCWSTR)L"open", filePath, NULL, wkPath, SW_SHOWNORMAL);
+}
+
+void Chimera::updateVarList(QString filepath, const QString &name, const QVector<int> &str)
+{
+	PTFile ptfile(filepath);
+	QList<QVector<float>> tmp = ptfile.GetPlot(str);
+	if (tmp.size() > 1) {
+		varpool->insert(strippedName(filepath) + "_time", tmp.first());
+		tmp.removeFirst();
+		varpool->insert(name, tmp.first());
+	}
+	contentwidget->updateVars(varpool->GetNameList());
+}
+
+void Chimera::ClearVars()
+{
+	varpool->clear();
+	contentwidget->updateVars(varpool->GetNameList());
 }
 
 ads::SectionContent::RefPtr Chimera::getCurrentSC()
